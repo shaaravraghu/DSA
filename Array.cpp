@@ -56,5 +56,12 @@ for (int i=0; i<arr.size(); i++){
 for(int x:arr){
   freq[x]++;
 }
-
-
+// KADANE'S ALGORITHM (LARGEST CONTINUOUS SUB-ARRAY)
+for(int i=0; i<arr.size(); i++){
+  current_streak = max(current_streak, current_streak + arr[i]);
+  best = max(best, current_streak);
+}
+// DIFFERENCE ARRAY
+for (int i=1; i<arr.size(); i++){
+  diff[i-1]= arr[i] - arr[i-1];
+}
