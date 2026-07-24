@@ -31,3 +31,23 @@ isupper(x);
 islower(x);
 tolower(x);
 toupper(x);
+
+// FREQUENCY
+vector<int> freq
+for(char c:s){
+  freq[c-'a']++;
+}
+// TWO POINTER
+int l=0;
+int r=s.size() - 1;
+while(l<r){
+  . . .
+  // increment/ decrement accordingly (together or independent)
+  l++;
+  r--:
+}
+// SLIDING WINDOW
+// sliding forward
+new sum = old sum - left element + right element (back++ & front++)
+// sliding backword 
+new sum = old sum + left element - right element (back-- & front--)
