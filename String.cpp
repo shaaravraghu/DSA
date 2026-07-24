@@ -1,3 +1,6 @@
+#include <string>
+#include <cctype>
+
 string s;
 string s="hello";
 string s(5, 'a'); // aaaaa
@@ -18,3 +21,13 @@ count(s.begin(), s.end(), 'a');
 s.find("xyz");
 s.substr(start, length);
 
+s.erase(pos, length);
+s.replace(pos, length, substr);
+s.insert(pos, substr);
+
+isdigit(x);
+isalpha(x);
+isupper(x);
+islower(x);
+tolower(x);
+toupper(x);
