@@ -65,3 +65,6 @@ for(int i=0; i<arr.size(); i++){
 for (int i=1; i<arr.size(); i++){
   diff[i-1]= arr[i] - arr[i-1];
 }
+
+vector<vector<int>> arr(rows, vector<int>(cols)); \\ 2D ARRAY
+vector<vector<vector<int>>> arr(rows, vector<vector<int>>(cols, vector<int>(depth))); \\ 3D ARRAY
