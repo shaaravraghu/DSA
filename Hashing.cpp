@@ -36,3 +36,9 @@ unordered_map<string, int> marks;
 marks["Name1"] = 92;
 marks["Name2"] = 87;
 // stores key value pairs, NO index, NOT sorted, NO duplicate keys, duplicate values possible (updates to latest value)
+
+// frequency problems are stored as KEY-FREQ PAIRS
+// counting frequency in array
+unordered_map<int,int> freq;
+for(int x : arr)
+    freq[x]++;
