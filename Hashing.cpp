@@ -42,3 +42,27 @@ marks["Name2"] = 87;
 unordered_map<int,int> freq;
 for(int x : arr)
     freq[x]++;
+
+// EXISTENCE CHECKING
+
+// Checking for Duplicates
+unordered_set<int> st;
+for (int x: arr){
+    if (st.count(x)) return true;
+    st.insert(x);
+} return false;
+
+// Number of Distinct Elements
+unordered_set<int> st(arr.begin(), arr.end());
+return st.size();
+
+// Remove Duplicates
+unordered_set<int> st(arr.begin(), arr.end());
+vector<int> nums(st.begin(), st.end());
+
+// Checking Missing Element
+unordered_set<int> st(arr1.begin(), arr1.end());
+for (int x: arr2){
+    if (!st.count(x)) {cout<<x; counter++;}
+}
+
