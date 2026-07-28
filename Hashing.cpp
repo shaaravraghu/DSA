@@ -66,3 +66,23 @@ for (int x: arr2){
     if (!st.count(x)) {cout<<x; counter++;}
 }
 
+// FREQUENCY COUNTING
+
+// finding frequency of each element
+unordered_map<int, int> freq;
+for(int x : arr) freq[x]++;
+
+// finding majority element (more than 50%)
+unordered_map<int, int> freq;
+for (int x : arr){
+    freq[x]++;
+    if (freq[x] > arr.size()/2) return x;
+}
+
+// first unique character in a string
+unordered_map<int, int> freq;
+for(int x : arr) freq[x]++;
+for (int i=0; i<s.size(); i++){
+    if (freq[s[i]] == 1) return s[i];
+}
+
