@@ -1,5 +1,10 @@
 // Hashing is a technique to store and retrieve data in O(1) time. The need for hashing comes from searching in an array linearly in O(n) time. Hash function is like a library search (search where it should be).
 
+#include <unordered_map>
+#include <unordered_set>
+#include <map>
+#include <set>
+
 // STL Contianers:
 // set (ordered) - O(log n)
 // unordered_set - O(1)
@@ -35,6 +40,18 @@ marks["Name2"] = 87;
 unordered_map<string, int> marks;
 marks["Name1"] = 92;
 marks["Name2"] = 87;
+// pre-defined functions
+mp.insert({key, value});
+mp.find(key); if (mp.find(5) != mp.end()) {}
+mp.count(key);  if (mp.count(5)) {}
+mp.erase(key);
+mp.clear();
+mp.size();
+mp.empty(); // size check
+mp.begin();
+mp.end();
+// iteration elements
+for (auto p : mp) cout << p.first << " " << p.second;
 // stores key value pairs, NO index, NOT sorted, NO duplicate keys, duplicate values possible (updates to latest value)
 
 // frequency problems are stored as KEY-FREQ PAIRS
@@ -86,3 +103,18 @@ for (int i=0; i<s.size(); i++){
     if (freq[s[i]] == 1) return s[i];
 }
 
+// verifying anagram
+if (s.size() != t.size()) return false;
+unordered_map<int, int> f1, f2;
+for (int i : s) f1[i]++;
+for (int i : t) f2[i]++;
+for (int i : s) if (f1[i] != f2[i]) return false;
+return true;
+
+// top K frequent elements
+// convert frequency to min. heap
+// (OR) frequency + sort
+
+// sort characters by frequency
+// convert frequency to min. heap
+// (OR) frequency + sort
