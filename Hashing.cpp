@@ -114,7 +114,17 @@ return true;
 // top K frequent elements
 // convert frequency to min. heap
 // (OR) frequency + sort
+unordered_map<char, int> freq;
+for (char c : s) freq[c]++;
+vector<pair<int, char>> v;
+for (auto p : freq) v.push_back({p.second, p.first});
+sort(v.rbegin(), v.rend());
 
 // sort characters by frequency
 // convert frequency to min. heap
 // (OR) frequency + sort
+unordered_map<char, int> freq;
+for (char c : s) freq[c]++;
+vector<pair<int, char>> v;
+for (auto p : freq) v.push_back({p.second, p.first});
+sort(v.rbegin(), v.rend());
