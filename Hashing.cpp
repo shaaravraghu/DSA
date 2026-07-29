@@ -187,3 +187,40 @@ for (int i = 0; i < nums.size(); i++) {
     }
 }
 return false;
+
+// Subarray sum equals K
+unordered_map<int, int> mp;
+mp[0] = 1;
+int sum = 0, ans = 0;
+for (int x : nums) {
+sum += x;
+ans += mp[sum - k];
+mp[sum]++;
+} return ans;
+
+// Need Subarray with equal number of 0's (-1) and 1's (+1): SUM=0
+unordered_map<int,int> mp;
+mp[0] = -1;
+int sum = 0, ans = 0;
+for(int i=0;i<nums.size();i++){
+    sum += nums[i] ? 1 : -1;
+    if(mp.count(sum))
+        ans = max(ans, i - mp[sum]);
+    else
+        mp[sum] = i;
+}
+return ans;
+
+// Longest Subarray with sum = k
+unordered_map<int,int> mp;
+int sum = 0, ans = 0;
+for(int i=0;i<nums.size();i++){
+    sum += nums[i];
+    if(sum == k)
+        ans = i + 1;
+    if(mp.count(sum-k))
+        ans = max(ans, i - mp[sum-k]);
+    if(!mp.count(sum))
+        mp[sum] = i;
+}
+return ans;
