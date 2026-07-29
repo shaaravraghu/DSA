@@ -188,14 +188,14 @@ for (int i = 0; i < nums.size(); i++) {
 }
 return false;
 
-// Subarray sum equals K
+// Total Subarrays with sum equals K
 unordered_map<int, int> mp;
-mp[0] = 1;
-int sum = 0, ans = 0;
+mp[0] = 1; // indicates start and visited
+int sum = 0, ans = 0; // current prefix sum and total number of subarrays
 for (int x : nums) {
 sum += x;
-ans += mp[sum - k];
-mp[sum]++;
+ans += mp[sum - k]; // current prefix sum (sum) - previous prefix sum = k; // If sum - k has appeared before, then every occurrence represents one valid subarray ending at the current index.
+mp[sum]++; // store current prefix sum for future iterations
 } return ans;
 
 // Need Subarray with equal number of 0's (-1) and 1's (+1): SUM=0
