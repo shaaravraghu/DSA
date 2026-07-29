@@ -118,3 +118,27 @@ sort(v.rbegin(), v.rend());
 reverse(v.begin(), v.end());
 *min_element(v.begin(), v.end());
 *max_element(v.begin(), v.end());
+
+// Multi-Dim PRE-DEFINED FUNCTIONS
+mat[i][j]; // access
+mat.push_back({1,2,3}); // insert row/ column
+mat[0].push_back(5); // insert element
+mat.size();          // rows
+mat[0].size();       // columns
+mat.pop_back(); // row operation
+mat.erase(start, end);
+mat[i].pop_back(); // column operation
+mat[i].erase(start, end);
+mat.clear();
+// Traversal
+for(int i=0;i<mat.size();i++)
+    for(int j=0;j<mat[i].size();j++)
+        cout<<mat[i][j];
+for(auto &row : mat)
+    for(auto &x : row)
+        cout<<x;
+// sort each row
+for(auto &row : mat)
+    sort(row.begin(), row.end());
+// sort rows
+sort(mat.begin(), mat.end());
