@@ -172,3 +172,18 @@ int missingNumber(vector<int>& nums) {
     return ans;
 }
 
+// Continuous Subarray Sum Divisible By K
+unordered_map<int, int> mp;
+mp[0] = -1;  // Handle subarrays starting at index 0
+int sum = 0;
+for (int i = 0; i < nums.size(); i++) {
+    sum += nums[i];
+    int rem = sum % k;
+    if (mp.count(rem)) {
+        if (i - mp[rem] >= 2)
+            return true;
+    } else {
+        mp[rem] = i;   // Store first occurrence only
+    }
+}
+return false;
