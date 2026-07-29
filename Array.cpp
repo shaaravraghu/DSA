@@ -96,3 +96,25 @@ partition()
 stable_sort()
 is_sorted()
 
+// 1D PRE-DEFINED FUNCTIONS
+v.push_back(x);
+v.insert(pos, x);
+v.pop_back();
+v.erase(start, end); v.erase(start);
+v.clear();
+v.front();
+v.back();
+v.size();
+v.empty();
+v.assign(5, 10); // {10,10,10,10,10}
+v.begin(); // first element
+v.end(); // last element + 1 (no-element and pointer only)
+v.rbegin(); // last element
+v.rend(); // first element - 1 (no-element and pointer only)
+find(v.begin(), v.end(), x);
+count(v.begin(), v.end(), x);
+sort(v.begin(), v.end());
+sort(v.rbegin(), v.rend());
+reverse(v.begin(), v.end());
+*min_element(v.begin(), v.end());
+*max_element(v.begin(), v.end());
