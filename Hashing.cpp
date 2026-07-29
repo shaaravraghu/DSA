@@ -198,16 +198,16 @@ ans += mp[sum - k]; // current prefix sum (sum) - previous prefix sum = k; // If
 mp[sum]++; // store current prefix sum for future iterations
 } return ans;
 
-// Need Subarray with equal number of 0's (-1) and 1's (+1): SUM=0
-unordered_map<int,int> mp;
-mp[0] = -1;
-int sum = 0, ans = 0;
+// Need Longest Subarray with equal number of 0's (-1) and 1's (+1): SUM=0
+unordered_map<int,int> mp; // key: prefix sum | value: first index where this prefix sum occured
+mp[0] = -1; // occurred before starting array
+int sum = 0, ans = 0; // sum: longest prefix sum; ans: longest length found
 for(int i=0;i<nums.size();i++){
     sum += nums[i] ? 1 : -1;
-    if(mp.count(sum))
-        ans = max(ans, i - mp[sum]);
+    if(mp.count(sum)) // Checks whether we've seen this prefix sum before
+        ans = max(ans, i - mp[sum]); // If the same prefix sum has appeared before, then the sum between those two indices is 0.
     else
-        mp[sum] = i;
+        mp[sum] = i; // appearing for first time -> store it
 }
 return ans;
 
