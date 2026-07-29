@@ -217,10 +217,10 @@ int sum = 0, ans = 0;
 for(int i=0;i<nums.size();i++){
     sum += nums[i];
     if(sum == k)
-        ans = i + 1;
+        ans = i + 1; // takes the length of longest subarray as it is
     if(mp.count(sum-k))
-        ans = max(ans, i - mp[sum-k]);
+        ans = max(ans, i - mp[sum-k]); // if current prefix sum - previous prefix sum = k
     if(!mp.count(sum))
-        mp[sum] = i;
+        mp[sum] = i; // if never encountered, store value
 }
 return ans;
