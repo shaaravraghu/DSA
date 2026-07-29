@@ -74,3 +74,25 @@ for (int i=1; i<arr.size(); i++){
 
 vector<vector<int>> arr(rows, vector<int>(cols)); \\ 2D ARRAY
 vector<vector<vector<int>>> arr(rows, vector<vector<int>>(cols, vector<int>(depth))); \\ 3D ARRAY
+
+// COMMON ALGORITHM PRE-DEFINED FUNCTION
+#include<algorithm>
+sort()
+reverse()
+find()
+count()
+binary_search()
+lower_bound()
+upper_bound()
+min_element()
+max_element()
+unique()
+fill()
+rotate()
+next_permutation()
+prev_permutation()
+nth_element()
+partition()
+stable_sort()
+is_sorted()
+
