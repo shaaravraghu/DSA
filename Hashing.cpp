@@ -128,3 +128,47 @@ for (char c : s) freq[c]++;
 vector<pair<int, char>> v;
 for (auto p : freq) v.push_back({p.second, p.first});
 sort(v.rbegin(), v.rend());
+
+// HASHMAPS + ARRAYS PATTERN
+// Two Sum: a + b = target
+unordered_map<int, int> mp; // nums is copied onto mp (only keys)
+for (int x: nums){
+    complement = target - x;
+    if (mp.count(complement){ // no need to check nums
+        mp[complement]=x;
+    }
+}
+
+// Longest Consecutive Sequence
+unordered_set<int> st(nums.begin(), nums.end());
+int longest = 0;
+for (int num : st) {
+    // Start only if num is the beginning of a sequence
+    if (!st.count(num - 1)) {
+        int curr = num;
+        int len = 1;
+        while (st.count(curr + 1)) { // Checks 
+            curr++;
+            len++;
+        }
+        longest = max(longest, len);
+    }
+}
+return longest;
+
+// Missing Number: Sum Method
+int missingNumber(vector<int>& nums) {
+    int n = nums.size();
+    int expected = n * (n + 1) / 2;
+    int actual = accumulate(nums.begin(), nums.end(), 0);
+    return expected - actual;
+}
+
+// Missing Number: XOR Logic
+int missingNumber(vector<int>& nums) {
+    int ans = nums.size();
+    for (int i = 0; i < nums.size(); i++)
+        ans ^= i ^ nums[i];
+    return ans;
+}
+
