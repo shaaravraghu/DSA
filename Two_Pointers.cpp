@@ -74,3 +74,16 @@ for (int fast = 0; fast < nums.size(); fast++) {
         slow++;
     }
 } return slow;
+
+// Merge Two Sorted Arrays
+vector<int> ans;
+int i = 0, j = 0;
+while (i < a.size() && j < b.size()) {
+    if (a[i] <= b[j])
+        ans.push_back(a[i++]);
+    else
+        ans.push_back(b[j++]);
+}
+while (i < a.size()) ans.push_back(a[i++]); // continuation if any one of the conditions terminate the above while loop
+while (j < b.size()) ans.push_back(b[j++]); // still keeps it sorted
+return ans;
