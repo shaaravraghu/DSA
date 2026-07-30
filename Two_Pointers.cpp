@@ -56,3 +56,4 @@ for (int fast = 1; fast < nums.size(); fast++) {
     }
 }
 return slow + 1; // returns number of unique elements
+
