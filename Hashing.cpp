@@ -281,3 +281,24 @@ for(int l = 0, r = 0; r < s2.size(); r++) {
         return true;
 }
 return false;
+
+// Total Number of Subarrays (non-continuous) with K distinct integers (variable size window): Exactly(K) = AtMost(K) - AtMost(K-1)
+int atMostK(vector<int>& nums, int k) {
+    unordered_map<int,int> mp;
+    int l = 0, ans = 0;
+    for(int r = 0; r < nums.size(); r++) {
+        if(mp[nums[r]]++ == 0) // decrease the value of k distinct integers  when found (freq == 0) and increase window size
+            k--;
+        while(k < 0) { // more than required distinct numbers; shrink from left
+            if(--mp[nums[l]] == 0) // identifies distinct element; if greater than zero: duplicate is counted; if =0: distinct element is noted
+                k++;
+            l++; // shrinks until need returns to required from exceeded state
+        }
+        ans += r - l + 1; // counts all valid sub-arrays possible ending at r(every possible right endpoint is considered exactly once: r is the counter variable): ABC -> ABC, BC, C
+    }
+    return ans;
+}
+int subarraysWithKDistinct(vector<int>& nums, int k) {
+    return atMostK(nums, k) - atMostK(nums, k - 1);
+}
+// can also be solved by permutations and combinations
