@@ -2,7 +2,7 @@
 // Fundamental Rule: Every time a pointer moves, one possibility is permanently eliminated.
 
 // Type 1: Opposite Ends
-Pointers start at opposite ends.
+// Pointers start at opposite ends.
 
 // Palindrome
 int l = 0, r = s.size() - 1;
@@ -41,3 +41,18 @@ while (l < r) {
     if (h[l] < h[r]) l++;
     else r--;
 } return ans;
+
+
+// Type 2: Same Direction (Fast & Slow; Sliding Window)
+// Both the pointers move in the same direction
+
+// Remove Duplicates (Sorted Array)
+if (nums.empty()) return 0;
+int slow = 0;
+for (int fast = 1; fast < nums.size(); fast++) {
+    if (nums[fast] != nums[slow]) { // doesn't care about duplicates, searches for the next unique number
+        slow++; // increments slow to hold position for unique number
+        nums[slow] = nums[fast]; // instead of clearing number and leaving a blank at duplicate positions, nums[fast] is copied to position where duplicate exists. 
+    }
+}
+return slow + 1; // returns number of unique elements
