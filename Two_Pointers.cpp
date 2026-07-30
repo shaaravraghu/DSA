@@ -13,7 +13,7 @@ while (l < r) {
 }
 return true;
 
-// Pair Sum (Sorted Array): 
+// Pair Sum (Sorted Array): return true if two numbers add up to a target
 int l = 0, r = a.size() - 1;
 while (l < r) {
     int sum = a[l] + a[r];
@@ -23,3 +23,12 @@ while (l < r) {
 }
 return false;
 
+// Reverse An Array/ String
+void reverse(vector<int>& a) {
+    int l = 0, r = a.size() - 1;
+    while (l < r) {
+        swap(a[l], a[r]);
+        l++;
+        r--;
+    }
+}
