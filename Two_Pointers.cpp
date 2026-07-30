@@ -66,4 +66,11 @@ for (int fast = 0; fast < nums.size(); fast++) {
     }
 }
 
-// 
+// Remove Specific Element: Remove all occurrences of a given value
+int slow = 0;
+for (int fast = 0; fast < nums.size(); fast++) {
+    if (nums[fast] != val) { // until value is encountered keep moving fast value to slow value and keep incrementing slow
+        nums[slow] = nums[fast];
+        slow++;
+    }
+} return slow;
