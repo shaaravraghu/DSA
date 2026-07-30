@@ -46,9 +46,9 @@ while (l < r) {
 // Type 2: Same Direction (Fast & Slow; Sliding Window)
 // Both the pointers move in the same direction
 
-// Remove Duplicates (Sorted Array)
+// Remove Duplicates (Sorted Array): Fast & Slow
 if (nums.empty()) return 0;
-int slow = 0;
+int slow = 0; // slow points to last unique element; scan looking for new values
 for (int fast = 1; fast < nums.size(); fast++) {
     if (nums[fast] != nums[slow]) { // doesn't care about duplicates, searches for the next unique number
         slow++; // increments slow to hold position for unique number
@@ -57,3 +57,13 @@ for (int fast = 1; fast < nums.size(); fast++) {
 }
 return slow + 1; // returns number of unique elements
 
+// Move Zeroes: Shift the zeroes to the end of the array (keeping the rest of the order intact)
+int slow = 0;
+for (int fast = 0; fast < nums.size(); fast++) {
+    if (nums[fast] != 0) { // fast pulls slow forward every time it encounters a non-zero number; when fast encounters a zero, it moves forward leaving slow at the latest zero
+        swap(nums[slow], nums[fast]); // when the first non-zero number is encountered, it swaps with zero (slow)
+        slow++;
+    }
+}
+
+// 
