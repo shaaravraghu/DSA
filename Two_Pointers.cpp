@@ -32,3 +32,12 @@ void reverse(vector<int>& a) {
         r--;
     }
 }
+
+// The Container with Most Water: This problem deals with choosing indices that maximise the amount of water; that is the (difference of the indices) X (min. of height of both the walls) because water will spill of the shorter wall
+int l = 0, r = h.size() - 1;
+int ans = 0;
+while (l < r) {
+    ans = max(ans, min(h[l], h[r]) * (r - l));
+    if (h[l] < h[r]) l++;
+    else r--;
+} return ans;
