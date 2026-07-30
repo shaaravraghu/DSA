@@ -12,3 +12,14 @@ while (l < r) {
     r--;
 }
 return true;
+
+// Pair Sum (Sorted Array): 
+int l = 0, r = a.size() - 1;
+while (l < r) {
+    int sum = a[l] + a[r];
+    if (sum == target) return true;
+    else if (sum < target) l++;
+    else r--;
+}
+return false;
+
