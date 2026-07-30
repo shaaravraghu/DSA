@@ -224,3 +224,33 @@ for(int i=0;i<nums.size();i++){
         mp[sum] = i; // if never encountered, store value
 }
 return ans;
+
+// SLIDING WINDOW + HASHMAP
+// Longest Substring without Repeating Characters
+unordered_map<char,int> mp;
+int l = 0, ans = 0; // r: right pointer; l: left pointer
+for(int r = 0; r < s.size(); r++) {
+    mp[s[r]]++; // addition of frequency when visited by right pointer
+    while(mp[s[r]] > 1) // if frequency is more than 1 (duplicate exists) and keep moving left pointer until condition satisfied
+        mp[s[l++]]--; // first decreases freq. then l+1; we are reducing the frequency because the sliding window has moved and removed the duplicate
+    ans = max(ans, r - l + 1);
+} return ans;
+
+// Minimum Substring of s carrying all characters of t
+unordered_map<char,int> mp;
+for(char c : t) mp[c]++; // listing the frequencies of characters in t
+int need = t.size(); // requirement for finding sub-array
+int l = 0, start = 0, len = INT_MAX; // l: left pointer, r: right pointer, start: starting index of best answer, len: min. window
+for(int r = 0; r < s.size(); r++) {
+    if(mp[s[r]]-- > 0) need--; // if in s we encounter a character requirement of t, then we reduce the frequency to mark as counted and reduce need (as noted)
+    while(need == 0) { // if need is complete
+        if(r - l + 1 < len) { // if the current window size is smaller than the latest window size
+            len = r - l + 1;
+            start = l; // update len and start
+        }
+        if(++mp[s[l++]] > 0) need++; // meaning of map values: positive (still need these many), zero (need satisfied), negative (extra copies present); we try to minimise the window here as much as possible; if something crucial is removed, it's frequency is added back
+    }
+}
+return len == INT_MAX ? "" : s.substr(start, len); // paste the result
+
+
