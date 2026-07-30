@@ -267,3 +267,17 @@ for(int l = 0, r = 0; r < s.size(); r++) { // keep moving until all characters a
         ans.push_back(l);
 }
 return ans;
+
+// Return true if s1's permutation (any random rearrangement) is found in s2 (fixed window: exact same problem as above)
+unordered_map<char,int> mp;
+for(char c : s1) mp[c]++;
+int need = s1.size();
+for(int l = 0, r = 0; r < s2.size(); r++) {
+    if(mp[s2[r]]-- > 0) need--;
+    if(r - l + 1 > s1.size()) {
+        if(++mp[s2[l++]] > 0) need++;
+    }
+    if(need == 0)
+        return true;
+}
+return false;
