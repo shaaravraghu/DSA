@@ -253,4 +253,17 @@ for(int r = 0; r < s.size(); r++) {
 }
 return len == INT_MAX ? "" : s.substr(start, len); // paste the result
 
-
+// List all positions where anagrams of p are found in s (fixed size window)     
+vector<int> ans;
+unordered_map<char,int> mp; 
+for(char c : p) mp[c]++; // listing characters and their frequencies
+int need = p.size(); 
+for(int l = 0, r = 0; r < s.size(); r++) { // keep moving until all characters are found (r increment)
+    if(mp[s[r]]-- > 0) need--; // if required char found, reduce freq and need
+    if(r - l + 1 > p.size()) { // if window is bigger than needed, move the left pointer
+        if(++mp[s[l++]] > 0) need++; // placing the character back into the needed; it won't add unnecccessary characters in because the map is designed from 'p'
+    }
+    if(need == 0) // whenever the conditions are satisfied
+        ans.push_back(l);
+}
+return ans;
