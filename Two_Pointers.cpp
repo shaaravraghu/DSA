@@ -172,3 +172,10 @@ for (int i = 1; i < intervals.size(); i++) {
     else
         end = intervals[i][1]; // update the value of the end time value of the (latest) interval we decided to keep
 } return remove;
+
+// Meeting rooms: can a person attend all meetings?
+sort(intervals.begin(), intervals.end());
+for (int i = 1; i < intervals.size(); i++)
+    if (intervals[i][0] < intervals[i-1][1])
+        return false;
+return true;
