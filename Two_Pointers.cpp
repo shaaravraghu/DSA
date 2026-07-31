@@ -132,3 +132,14 @@ for (int fast = 0; fast < n; fast++) {
     // Process current valid window
 }
 
+// Type 3: Intervals
+// Merge Intervals
+sort(intervals.begin(), intervals.end());
+vector<vector<int>> ans;
+for (auto &cur : intervals) {
+    if (ans.empty() || ans.back()[1] < cur[0]) // (1st condition) if empty -> just insert the first interval; (2nd condition) we check the last interval in ans (end time) and curr (start time): no merge condition
+        ans.push_back(cur);
+    else // merge condition
+        ans.back()[1] = max(ans.back()[1], cur[1]);
+}
+
