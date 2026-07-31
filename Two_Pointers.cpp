@@ -142,6 +142,7 @@ for (auto &cur : intervals) {
     else // merge condition
         ans.back()[1] = max(ans.back()[1], cur[1]);
 }
+return ans;
 
 // Add Interval (Merged)
 vector<vector<int>> ans; // intervals is the array of all previously sorted arrays; newInterval is the interval that needs to be added
@@ -157,3 +158,17 @@ ans.push_back(newInterval); // push latest interval (after conflicts have been m
 while (i < n)
     ans.push_back(intervals[i++]); // just push the intervals after newInterval in (without conflicts)
 return ans;
+
+// Non-overlapping Intervals: Minimum intervals to remove so none overlap
+sort(intervals.begin(), intervals.end(), // we're sorting by the end time
+[](auto &a, auto &b) {
+    return a[1] < b[1]; // place interval with smaller end time first
+}); // this is part of the sort function
+int end = intervals[0][1]; // the end time value of the (latest) interval we decided to keep
+int remove = 0;
+for (int i = 1; i < intervals.size(); i++) {
+    if (intervals[i][0] < end) // remove intervals with start time less than end time of the latest kept interval // removing multiple smaller intervals doesn't have to be worried upon because we have sorted the array based on end time
+        remove++;
+    else
+        end = intervals[i][1]; // update the value of the end time value of the (latest) interval we decided to keep
+} return remove;
