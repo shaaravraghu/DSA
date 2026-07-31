@@ -101,7 +101,16 @@ for (int fast = 0; fast < nums.size(); fast++) { // increments window size to mo
     }
 } return ans;
 
-
+// Sliding Window (Variable Size): Finding longest/ shortest subarray with condition
+int slow = 0;
+for (int fast = 0; fast < n; fast++) { // extend window
+    // Add nums[fast] to the window
+    while (window is invalid) {
+        // Remove nums[slow]
+        slow++; // contract window
+    }
+    // Update answer
+}
 
 
 
