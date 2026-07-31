@@ -88,15 +88,16 @@ while (i < a.size()) ans.push_back(a[i++]); // continuation if any one of the co
 while (j < b.size()) ans.push_back(b[j++]); // still keeps it sorted
 return ans;
 
-// Sliding Window (Fixed Size)
-int sum = 0, ans = INT_MIN;
+// Sliding Window (Fixed Size): Finding max/ min of every subarray of size k
+int sum = 0, max_ans = INT_MIN, min_ans = INT_MAX;
 int slow = 0;
-for (int fast = 0; fast < nums.size(); fast++) {
-    sum += nums[fast];
-    if (fast - slow + 1 == k) {
-        ans = max(ans, sum);
-        sum -= nums[slow];
-        slow++;
+for (int fast = 0; fast < nums.size(); fast++) { // increments window size to move forward
+    sum += nums[fast]; // adds element while incrementing window
+    if (fast - slow + 1 == k) { // ensure subarray is of size k
+        max_ans = max(max_ans, sum); // returns maximum of subarray
+        min_ans = min(min_ans, sum); // returns minimum of subarray
+        sum -= nums[slow]; // removes element while decrementing window
+        slow++; // decrements window size while moving forward
     }
 } return ans;
 
