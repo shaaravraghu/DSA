@@ -88,7 +88,17 @@ while (i < a.size()) ans.push_back(a[i++]); // continuation if any one of the co
 while (j < b.size()) ans.push_back(b[j++]); // still keeps it sorted
 return ans;
 
-
+// Sliding Window (Fixed Size)
+int sum = 0, ans = INT_MIN;
+int slow = 0;
+for (int fast = 0; fast < nums.size(); fast++) {
+    sum += nums[fast];
+    if (fast - slow + 1 == k) {
+        ans = max(ans, sum);
+        sum -= nums[slow];
+        slow++;
+    }
+} return ans;
 
 
 
