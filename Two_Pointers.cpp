@@ -143,3 +143,17 @@ for (auto &cur : intervals) {
         ans.back()[1] = max(ans.back()[1], cur[1]);
 }
 
+// Add Interval (Merged)
+vector<vector<int>> ans; // intervals is the array of all previously sorted arrays; newInterval is the interval that needs to be added
+int i = 0, n = intervals.size();
+while (i < n && intervals[i][1] < newInterval[0]) // until end time of intervals are less than start time of new interval; just keep pushing the intervals
+    ans.push_back(intervals[i++]); // increment i after interval is added to ans
+while (i < n && intervals[i][0] <= newInterval[1]) { // intervals overlap // update newInterval to keep it clean; keep repeating until all conflicting intervals are merged
+    newInterval[0] = min(newInterval[0], intervals[i][0]); // set min. of both (start time)
+    newInterval[1] = max(newInterval[1], intervals[i][1]); // set max. of both (end time)
+    i++;
+}
+ans.push_back(newInterval); // push latest interval (after conflicts have been merged)
+while (i < n)
+    ans.push_back(intervals[i++]); // just push the intervals after newInterval in (without conflicts)
+return ans;
