@@ -179,3 +179,21 @@ for (int i = 1; i < intervals.size(); i++)
     if (intervals[i][0] < intervals[i-1][1])
         return false;
 return true;
+
+// Minimum Meeting Rooms
+sort(intervals.begin(), intervals.end());
+priority_queue<int,
+vector<int>,
+greater<int>> pq;
+for (auto &it : intervals) {
+    if (!pq.empty() && pq.top() <= it[0])
+        pq.pop();
+    pq.push(it[1]);
+}
+return pq.size();
+// algorithm
+// Sort start times
+// Use min-heap of ending times
+// Remove meetings that ended
+// Heap size = rooms occupied
+// Maximum heap size = answer
