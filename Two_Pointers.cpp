@@ -112,6 +112,15 @@ for (int fast = 0; fast < n; fast++) { // extend window
     // Update answer
 }
 
+// Generic Template: Read-Write (Compaction)
+int slow = 0;
+for (int fast = 0; fast < n; fast++) {
+    if (keep(nums[fast])) {
+        nums[slow] = nums[fast];
+        slow++;
+    }
+}
+
 
 
 
