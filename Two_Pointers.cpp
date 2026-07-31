@@ -121,8 +121,14 @@ for (int fast = 0; fast < n; fast++) {
     }
 }
 
-
-
-
-
+// Generic Template: Sliding Window
+int slow = 0;
+for (int fast = 0; fast < n; fast++) {
+    // Expand window
+    while (window is invalid) {
+        // Shrink window
+        slow++;
+    }
+    // Process current valid window
+}
 
