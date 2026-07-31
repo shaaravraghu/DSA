@@ -210,3 +210,14 @@ while (i < A.size() && j < B.size()) {
     else
         j++;
 }
+
+// general template
+sort(intervals.begin(), intervals.end());
+vector<vector<int>> ans;
+for (auto &cur : intervals) {
+    if (ans.empty() || ans.back()[1] < cur[0]) {
+        ans.push_back(cur);
+    } else {
+        ans.back()[1] = max(ans.back()[1], cur[1]);
+    }
+}
