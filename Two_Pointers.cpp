@@ -261,3 +261,20 @@ for (int i = 0; i < a.size(); i++) { // checks for all possible values of i
     }
 }
 return ans;
+
+// 3Sum: Closest value to target
+sort(a.begin(), a.end()); // sorting allows to use the pointer technique
+int ans = a[0] + a[1] + a[2]; // initial known value for comparison
+for (int i = 0; i < a.size() - 2; i++) { // counter to check all variables
+    int l = i + 1, r = a.size() - 1; // initialising 'l' from start and 'r' from end
+    while (l < r) { // 'l' & 'r' to not coincide
+        int sum = a[i] + a[l] + a[r]; // notes current value
+        if (abs(target - sum) < abs(target - ans)) // smaller difference chosen
+            ans = sum;
+        if (sum < target)
+            l++; // increase value to get closer to target
+        else
+            r--; // decrease value to get closer to target
+    }
+}
+return ans;
