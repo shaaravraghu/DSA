@@ -340,3 +340,13 @@ int partition(vector<int>& a, int l, int r)
         swap(a[i], a[j]);
     }
 }
+
+// Wiggle sort
+// Input: 3 5 2 1 6 4; Sorted: 1 2 3 4 5 6; Wiggle: 3 (<) 5 (>) 1 (<) 6 (>) 2 (<) 4;
+// The wiggle array is not sorted, but every adjacent pair satisfies the required alternating relationship.
+for (int i = 1; i < n; i++)
+{
+    if ((i & 1 && a[i] < a[i - 1]) || // must follow odd case properly (a[i] < a[i - 1])
+        (!(i & 1) && a[i] > a[i - 1])) // must follow even case properly (a[i] > a[i - 1])
+        swap(a[i], a[i - 1]);
+}
