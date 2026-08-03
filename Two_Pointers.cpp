@@ -221,3 +221,20 @@ for (auto &cur : intervals) {
         ans.back()[1] = max(ans.back()[1], cur[1]);
     }
 }
+
+// Type 3: 3 Pointer
+// Dutch National Flag: Sort 0's, 1's, 2's
+// 0s       1s      Unknown     2s
+// |--------|-------|-----------|------|
+// 0      l-1     m-1           h    n-1
+//          l       m
+// Here we do swap along m because values smaller than m get swapped to the left of it and values greater than it get swapped right
+int l = 0, m = 0, h = a.size() - 1; // Here we increment l & m and decrement h; m also acts as the pointer moving to the array (gets incremented in all steps)
+while (m <= h) { // loop keeps running until m & h coincide
+    if (a[m] == 0) 
+        swap(a[l++], a[m++]); // we provide the number 'm' fetches to 'l'; l's post increment for the next swap
+    else if (a[m] == 1)
+        m++; // number remains and next index is checked
+    else // refers to a[m] == 2
+        swap(a[m], a[h--]); // we provide the number 'm' fetches to 'h'; h's post decrement for the next swap
+}
