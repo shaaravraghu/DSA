@@ -306,3 +306,17 @@ for (int i = 0; i < n - 3; i++) { // index extends to 4th number from last
         }
     }
 }
+
+// Quicksort: Lomotu Partition
+int partition(vector<int>& a, int l, int r)
+{
+    int pivot = a[r]; // take pivot as last element or pre-defined value
+    int i = l;
+    for (int j = l; j < r; j++) // keep swapping until all elements less than pivot are moved towards the left
+    {
+        if (a[j] <= pivot)
+            swap(a[i++], a[j]);
+    }
+    swap(a[i], a[r]); // once the loop above ends (j < r: j doesn't coincide with pivot)
+    return i;
+}
