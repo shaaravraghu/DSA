@@ -278,3 +278,31 @@ for (int i = 0; i < a.size() - 2; i++) { // counter to check all variables
     }
 }
 return ans;
+
+// 4Sum: k-Sum to target
+// For 2Sum (sorted): Use two pointers (l, r).
+// For 3Sum: Fix one number (i). Solve 2Sum on the remaining array.
+// For 4Sum: Fix two numbers (i, j). Solve 2Sum on the remaining array.
+// For k-sum: fix (k-2) numbers. Solve 2Sum on the remaining array.
+sort(a.begin(), a.end()); // to apply 2-sum
+for (int i = 0; i < n - 3; i++) { // index extends to 4th number from last
+    if (i && a[i] == a[i - 1]) continue; // keep incrementing until duplicate elements are surpassed
+    for (int j = i + 1; j < n - 2; j++) { // index extends to 3rd number from last and starts from 1 position post i
+        if (j > i + 1 && a[j] == a[j - 1]) continue; // keep incrementing until duplicate elements are surpassed
+        int l = j + 1, r = n - 1; // set-up 2-sum by defining l (1 position past j) & r
+        while (l < r) {
+            long long sum = 1LL * a[i] + a[j] + a[l] + a[r]; // 1LL is 1 in long long form
+            if (sum == target) {
+                // answer array append
+                l++; // keep incrementing till all possibilities are done
+                r--; // keep decrementing till all possibilities are done
+                while (l < r && a[l] == a[l - 1]) l++; // keep incrementing until duplicate elements are surpassed and ensure l & r do not coincide
+                while (l < r && a[r] == a[r + 1]) r--; // keep decrementing until duplicate elements are surpassed and ensure l & r do not coincide
+            }
+            else if (sum < target)
+                l++; // keep incrementing till target is reached
+            else
+                r--; // keep decrementing till target is reached
+        }
+    }
+}
