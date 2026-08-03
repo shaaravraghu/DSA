@@ -307,7 +307,7 @@ for (int i = 0; i < n - 3; i++) { // index extends to 4th number from last
     }
 }
 
-// Quicksort: Lomotu Partition
+// Quicksort: Lomotu's Partition
 int partition(vector<int>& a, int l, int r)
 {
     int pivot = a[r]; // take pivot as last element or pre-defined value
@@ -318,5 +318,25 @@ int partition(vector<int>& a, int l, int r)
             swap(a[i++], a[j]);
     }
     swap(a[i], a[r]); // once the loop above ends (j < r: j doesn't coincide with pivot)
-    return i;
+    return i; // returns pivot position
+}
+
+// Quicksort: Hoare's Partition
+// Core idea: Two pointers move towards each other:
+// i moves left → right looking for an element that doesn't belong on the left (i.e., >= pivot).
+// j moves right → left looking for an element that doesn't belong on the right (i.e., <= pivot).
+// When both stop, swap them.
+int partition(vector<int>& a, int l, int r)
+{
+    int pivot = a[l];
+    int i = l - 1;
+    int j = r + 1;
+    while (true)
+    {
+        do i++; while (a[i] < pivot);
+        do j--; while (a[j] > pivot);
+        if (i >= j) // initially | correct |i| unknown |j| correct | -> | correct |j| correct |i| correct |
+            return j; // returns partition boundary
+        swap(a[i], a[j]);
+    }
 }
