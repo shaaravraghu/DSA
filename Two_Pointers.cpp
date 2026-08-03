@@ -350,3 +350,33 @@ for (int i = 1; i < n; i++)
         (!(i & 1) && a[i] > a[i - 1])) // must follow even case properly (a[i] > a[i - 1])
         swap(a[i], a[i - 1]);
 }
+
+// Move Negatives to Left
+int l = 0, r = n - 1;
+while (l < r)
+{
+    while (l < r && a[l] < 0) l++;
+    while (l < r && a[r] >= 0) r--;
+    if (l < r)
+        swap(a[l], a[r]);
+}
+
+// Odd/ Even Partition
+int l = 0, r = n - 1;
+while (l < r)
+{
+    while (l < r && a[l] % 2 == 0) l++;
+    while (l < r && a[r] % 2 == 1) r--;
+    swap(a[l], a[r]);
+}
+
+// Stable Partition
+vector<int> left, right;
+for (int x : a)
+{
+    if (condition(x))
+        left.push_back(x);
+    else
+        right.push_back(x);
+}
+left.insert(left.end(), right.begin(), right.end());
