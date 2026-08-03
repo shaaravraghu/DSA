@@ -238,3 +238,26 @@ while (m <= h) { // loop keeps running until m & h coincide
     else // refers to a[m] == 2
         swap(a[m], a[h--]); // we provide the number 'm' fetches to 'h'; h's post decrement for the next swap
 }
+
+// 3Sum: Triplets with target = 0
+vector<vector<int>> ans;
+sort(a.begin(), a.end()); // sorting the array
+for (int i = 0; i < a.size(); i++) { // checks for all possible values of i
+    if (i && a[i] == a[i - 1]) continue;
+    int l = i + 1, r = a.size() - 1; // defining 'l': left and 'r': right; 
+    while (l < r) { // increment 'l' and decrement 'r' until they try to coincide
+        int sum = a[i] + a[l] + a[r]; // noting value at each interval
+        if (sum == 0) {
+            ans.push_back({a[i], a[l], a[r]});
+            l++;
+            r--;
+            while (l < r && a[l] == a[l - 1]) l++; // avoid repetitions in ans by avoiding duplicates
+            while (l < r && a[r] == a[r + 1]) r--; // avoid repetitions in ans by avoiding duplicates
+        }
+        else if (sum < 0)
+            l++; // increasing value of sum
+        else
+            r--; // decreasing value of sum
+    }
+}
+return ans;
