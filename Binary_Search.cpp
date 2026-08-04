@@ -97,3 +97,15 @@ while (l <= r) {
     else
         l = mid + 2; // max 4 numbers can be in wrong positions (in continuous set) and to increase a position 2/2=1
 }
+
+// Find Floor (Greatest ≤ Target)
+int ans = -1;
+while (l <= r) {
+    int mid = l + (r - l) / 2;
+    if (a[mid] <= target) {
+        ans = mid;
+        l = mid + 1;
+    } else {
+        r = mid - 1;
+    }
+}
