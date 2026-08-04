@@ -81,3 +81,19 @@ while (low <= high) {
     else
         high = mid - 1;
 }
+
+// Search in nearly sorted array
+// nearly sorted array refers to sorted arrays with elements that may rearrange with only 1 unit space of misplacement
+while (l <= r) {
+    int mid = l + (r - l) / 2;
+    if (a[mid] == target)
+        return mid;
+    if (mid > l && a[mid - 1] == target) // generic increasing direction is to the right and mid-1 index might be interchanged
+        return mid - 1;
+    if (mid < r && a[mid + 1] == target) // generic decreasing direction is to the left and mid+1 index might be interchanged
+        return mid + 1;
+    if (a[mid] > target)
+        r = mid - 2; // max 4 numbers can be in wrong positions (in continuous set) and to decrease a position -2/2=-1
+    else
+        l = mid + 2; // max 4 numbers can be in wrong positions (in continuous set) and to increase a position 2/2=1
+}
