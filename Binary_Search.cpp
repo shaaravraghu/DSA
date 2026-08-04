@@ -57,3 +57,13 @@ while (low < high) {
     else
         low = mid + 1;
 } return low;
+
+// Binary Search on Answer (Maximum Yield)
+// after a particular value the if condition becomes FALSE; we have to find that index (TTTTTTTTT(T)FFFF)
+while (low < high) {
+    int mid = low + (high - low + 1) / 2;
+    if (check(mid))
+        low = mid;
+    else
+        high = mid - 1;
+} return low;
