@@ -1,3 +1,5 @@
+// Select answer (mid+1, mid or mid-1) based on Target definition
+
 // Sorted Array: Find Target
 // bisects search area by half every time it progresses; returns index of target
 int l = 0, r = a.size() - 1;
@@ -11,7 +13,7 @@ while (l <= r) {
         r = mid - 1;
 } return -1;
 
-// Lower Bound: First Element < Target
+// Lower Bound: First Element >= Target
 int l = 0, r = a.size(); // this defines the solution to belong in [l, r) 
 while (l < r) { // when r-l = 0, the search is over; it doesn't define the solution [[l, r) -> [l, l) -> NULL]
     int mid = l + (r - l) / 2;
@@ -45,3 +47,13 @@ while (l <= r) {
     else
         r = mid - 1;
 } return ans;
+
+// Binary Search on Answer (Minimum Yield)
+// after a particular value the if condition becomes TRUE; we have to find that index (FFFFFFFFFF(T)TTTTTT)
+while (low < high) {
+    int mid = low + (high - low) / 2;
+    if (check(mid))
+        high = mid;
+    else
+        low = mid + 1;
+} return low;
