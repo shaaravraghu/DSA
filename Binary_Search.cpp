@@ -67,3 +67,17 @@ while (low < high) {
     else
         high = mid - 1;
 } return low;
+
+// Peak Element in Binary search doesn't guarantee global maxima; it can bring any of the local maxima
+
+// Binary Search on Monotonic Function
+while (low <= high) {
+    int mid = low + (high - low) / 2;
+
+    if (f(mid) == target)
+        return mid;
+    else if (f(mid) < target)
+        low = mid + 1;
+    else
+        high = mid - 1;
+}
