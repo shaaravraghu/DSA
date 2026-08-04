@@ -121,3 +121,11 @@ while (l <= r) {
         l = mid + 1;
     }
 }
+
+// Binary Search on Infinite Sorted Array
+int l = 0, r = 1;
+while (a[r] < target){
+    l = r;
+    r *= 2;
+}
+// Apply normal binary search on [l, r] here (while loop condition fails)
