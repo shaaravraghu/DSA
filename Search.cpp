@@ -4,6 +4,21 @@ for (int i = 0; i < n; i++){
 }
 return -1;
 
+// Exponential Search (needs a sorted array)
+if (arr[0] == target)
+    return 0;
+int i = 1;
+while (i < n && arr[i] <= target)
+    i *= 2;
+int low = i / 2;
+int high = min(i, n - 1);
+// Binary Search implemented when exponential fails!
+    if (target < arr[mid])
+        high = mid - 1;
+    else
+        low = mid + 1;
+} return -1;
+
 // Interpolation Search (works best for uniformly distributed data (must be sorted))
 int low = 0;
 int high = n - 1;
@@ -24,11 +39,12 @@ while (low <= high){
     int mid = low + (high - low) / 2;
     if (arr[mid] == target)
         return mid;
-    if (target < arr[mid])
-        high = mid - 1;
-    else
+    if (arr[mid] < target)
         low = mid + 1;
+    else
+        high = mid - 1;
 } return -1;
+
 
 // Jump Search (requires sorted array)
 int step = sqrt(n);
