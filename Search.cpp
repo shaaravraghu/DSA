@@ -4,6 +4,30 @@ for (int i = 0; i < n; i++){
 }
 return -1;
 
+
+// Ternary Search (requires sorted array)
+int low = 0;
+int high = n - 1;
+while (low <= high){
+    int mid1 = low + (high - low) / 3; // (+2/3) low + (-1/3) high
+    int mid2 = high - (high - low) / 3; // (+2/3) high + (+1/3) low
+    if (arr[mid1] == target)
+        return mid1;
+    if (arr[mid2] == target)
+        return mid2;
+    if (target < arr[mid1]){
+        high = mid1 - 1;
+    }
+    else if (target > arr[mid2]){
+        low = mid2 + 1;
+    }
+    else {
+        low = mid1 + 1;
+        high = mid2 - 1;
+    }
+} return -1;
+
+
 // Fibonacci Search (requires sorted array): instead of dividing by halves; divide by fibonacci numbers
 int fibMMm2 = 0;   // (m-2)'th Fibonacci
 int fibMMm1 = 1;   // (m-1)'th Fibonacci
@@ -36,6 +60,7 @@ if (fibMMm1 && offset + 1 < n && arr[offset + 1] == target) // if while loop fai
     return offset + 1;
 return -1; // if not found
 
+
 // Exponential Search (needs a sorted array)
 if (arr[0] == target)
     return 0;
@@ -51,6 +76,7 @@ int high = min(i, n - 1);
         low = mid + 1;
 } return -1;
 
+
 // Interpolation Search (works best for uniformly distributed data (must be sorted))
 int low = 0;
 int high = n - 1;
@@ -63,6 +89,7 @@ while (low <= high && target >= arr[low] && target <= arr[high]){
     else
         high = pos - 1;
 } return -1;
+
 
 // Binary Search (requires sorted array)
 int low = 0;
