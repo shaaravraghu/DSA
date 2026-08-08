@@ -75,3 +75,65 @@ HEAPIFY(A, n, i):
     if largest != i:
         swap(A[i], A[largest])
         HEAPIFY(A, n, largest)
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+// Merge Sort
+MERGESORT(A, n):
+    size = 1
+
+    while size < n:
+        left = 0
+
+        while left < n:
+            mid = min(left + size, n)
+            right = min(left + 2*size, n)
+
+            MERGE(A, left, mid, right)
+
+            left += 2 * size
+
+        size *= 2
+
+
+MERGE(A, left, mid, right):
+    temp = new array[right - left]
+
+    i = left
+    j = mid
+    k = 0
+
+    while i < mid AND j < right:
+        if A[i] <= A[j]:
+            temp[k++] = A[i++]
+        else:
+            temp[k++] = A[j++]
+
+    while i < mid:
+        temp[k++] = A[i++]
+
+    while j < right:
+        temp[k++] = A[j++]
+
+    for i = 0 to length(temp)-1:
+        A[left + i] = temp[i]
