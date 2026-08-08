@@ -48,6 +48,31 @@ PARTITION(A, low, high):
 
 
 
+// Bubble Sort
+BUBBLE_SORT(A, n):
+
+    for i = 0 to n - 2:
+        swapped = false
+
+        for j = 0 to n - i - 2:
+
+            if A[j] > A[j + 1]:
+                swap(A[j], A[j + 1])
+                swapped = true
+
+        if swapped == false:
+            break
+
+
+
+
+
+
+
+
+
+
+
 // Heap Sort
 HEAPSORT(A, n):
 
