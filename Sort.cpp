@@ -257,3 +257,33 @@ COUNTING_SORT(A, n):
         while count[value] > 0:
             A[k++] = value + minVal
             count[value]--
+
+
+
+
+
+
+
+
+
+
+
+// Bucket Sort
+BUCKET_SORT(A, n):
+
+    buckets = new array[n]
+    
+    for i = 0 to n - 1:
+        buckets[i] = empty array
+
+    for i = 0 to n - 1:
+        index = floor(n * A[i])
+        buckets[index].append(A[i])
+
+    k = 0
+
+    for i = 0 to n - 1:
+        INSERTION_SORT(buckets[i])
+
+        for x in buckets[i]:
+            A[k++] = x
