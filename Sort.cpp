@@ -222,3 +222,38 @@ MERGE(A, left, mid, right):
 
     for i = 0 to length(temp)-1:
         A[left + i] = temp[i]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// Counting Sort
+COUNTING_SORT(A, n):
+
+    maxVal = maximum(A)
+    minVal = minimum(A)
+
+    range = maxVal - minVal + 1
+
+    count = new array[range] initialized to 0
+
+    for i = 0 to n - 1:
+        count[A[i] - minVal]++
+
+    k = 0
+
+    for value = 0 to range - 1:
+        while count[value] > 0:
+            A[k++] = value + minVal
+            count[value]--
