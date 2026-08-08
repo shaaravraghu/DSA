@@ -257,3 +257,90 @@ COUNTING_SORT(A, n):
         while count[value] > 0:
             A[k++] = value + minVal
             count[value]--
+
+
+
+
+
+
+
+
+
+
+
+// Bucket Sort
+BUCKET_SORT(A, n):
+
+    buckets = new array[n]
+    
+    for i = 0 to n - 1:
+        buckets[i] = empty array
+
+    for i = 0 to n - 1:
+        index = floor(n * A[i])
+        buckets[index].append(A[i])
+
+    k = 0
+
+    for i = 0 to n - 1:
+        INSERTION_SORT(buckets[i])
+
+        for x in buckets[i]:
+            A[k++] = x
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+RADIX_SORT(A, n):
+
+    maxVal = maximum(A)
+
+    exp = 1
+
+    while maxVal / exp > 0:
+
+        COUNTING_SORT_DIGIT(A, n, exp)
+
+        exp *= 10
+
+COUNTING_SORT_DIGIT(A, n, exp):
+
+    output = new array[n]
+    count = new array[10] initialized to 0
+
+    // Count digit
+    for i = 0 to n - 1:
+        digit = (A[i] / exp) % 10
+        count[digit]++
+
+    // Prefix sum
+    for i = 1 to 9:
+        count[i] += count[i - 1]
+
+    // Stable placement
+    for i = n - 1 down to 0:
+        digit = (A[i] / exp) % 10
+
+        output[count[digit] - 1] = A[i]
+        count[digit]--
+
+    // Copy back
+    for i = 0 to n - 1:
+        A[i] = output[i]
