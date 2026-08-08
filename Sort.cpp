@@ -158,7 +158,17 @@ INSERTION_SORT(A, n):
           
           
           
+SELECTION_SORT(A, n):
 
+    for i = 0 to n - 2:
+
+        minIndex = i
+
+        for j = i + 1 to n - 1:
+            if A[j] < A[minIndex]:
+                minIndex = j
+
+        swap(A[i], A[minIndex])
 
 
 
