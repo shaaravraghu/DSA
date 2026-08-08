@@ -75,6 +75,41 @@ HEAPIFY(A, n, i):
     if largest != i:
         swap(A[i], A[largest])
         HEAPIFY(A, n, largest)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// Insertion Sort
+INSERTION_SORT(A, n):
+
+    for i = 1 to n - 1:
+        key = A[i]
+        j = i - 1
+
+        while j >= 0 AND A[j] > key:
+            A[j + 1] = A[j]
+            j--
+
+        A[j + 1] = key
           
           
           
@@ -98,6 +133,21 @@ HEAPIFY(A, n, i):
           
           
           
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 // Merge Sort
 MERGESORT(A, n):
     size = 1
