@@ -32,3 +32,81 @@ PARTITION(A, low, high):
 
     swap(A[i + 1], A[high])
     return i + 1
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// Heap Sort
+HEAPSORT(A, n):
+
+    // Build Max Heap
+    for i = n/2 - 1 down to 0:
+        HEAPIFY(A, n, i)
+
+    // Extract maximum
+    for i = n - 1 down to 1:
+        swap(A[0], A[i])
+        HEAPIFY(A, i, 0)
+
+
+HEAPIFY(A, n, i):
+    largest = i
+    left  = 2*i + 1
+    right = 2*i + 2
+
+    if left < n AND A[left] > A[largest]:
+        largest = left
+
+    if right < n AND A[right] > A[largest]:
+        largest = right
+
+    if largest != i:
+        swap(A[i], A[largest])
+        HEAPIFY(A, n, largest)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// Insertion Sort
+INSERTION_SORT(A, n):
+
+    for i = 1 to n - 1:
+        key = A[i]
+        j = i - 1
+
+        while j >= 0 AND A[j] > key:
+            A[j + 1] = A[j]
+            j--
+
+        A[j + 1] = key
