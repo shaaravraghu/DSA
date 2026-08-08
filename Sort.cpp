@@ -62,3 +62,142 @@ BUBBLE_SORT(A, n):
 
         if swapped == false:
             break
+// Heap Sort
+HEAPSORT(A, n):
+
+    // Build Max Heap
+    for i = n/2 - 1 down to 0:
+        HEAPIFY(A, n, i)
+
+    // Extract maximum
+    for i = n - 1 down to 1:
+        swap(A[0], A[i])
+        HEAPIFY(A, i, 0)
+
+
+HEAPIFY(A, n, i):
+    largest = i
+    left  = 2*i + 1
+    right = 2*i + 2
+
+    if left < n AND A[left] > A[largest]:
+        largest = left
+
+    if right < n AND A[right] > A[largest]:
+        largest = right
+
+    if largest != i:
+        swap(A[i], A[largest])
+        HEAPIFY(A, n, largest)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// Insertion Sort
+INSERTION_SORT(A, n):
+
+    for i = 1 to n - 1:
+        key = A[i]
+        j = i - 1
+
+        while j >= 0 AND A[j] > key:
+            A[j + 1] = A[j]
+            j--
+
+        A[j + 1] = key
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// Merge Sort
+MERGESORT(A, n):
+    size = 1
+
+    while size < n:
+        left = 0
+
+        while left < n:
+            mid = min(left + size, n)
+            right = min(left + 2*size, n)
+
+            MERGE(A, left, mid, right)
+
+            left += 2 * size
+
+        size *= 2
+
+
+MERGE(A, left, mid, right):
+    temp = new array[right - left]
+
+    i = left
+    j = mid
+    k = 0
+
+    while i < mid AND j < right:
+        if A[i] <= A[j]:
+            temp[k++] = A[i++]
+        else:
+            temp[k++] = A[j++]
+
+    while i < mid:
+        temp[k++] = A[i++]
+
+    while j < right:
+        temp[k++] = A[j++]
+
+    for i = 0 to length(temp)-1:
+        A[left + i] = temp[i]
